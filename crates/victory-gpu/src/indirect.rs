@@ -719,8 +719,8 @@ void main() {
         let Some(mut warp) = WarpHarness::new() else {
             return;
         };
-        let compare = compile_cs(&warp.device, CARD_COMPARE).expect("the card compare must compile on WARP");
-        let fetch = compile_cs(&warp.device, CARD_FETCH).expect("the card fetch must compile on WARP");
+        let compare = make_for(&warp.device, CARD_COMPARE).expect("the card compare must compile on WARP");
+        let fetch = make_for(&warp.device, CARD_FETCH).expect("the card fetch must compile on WARP");
         const PIECE: usize = 64 << 10;
         const PIECES: u32 = 3;
         // The copy starts 40 bytes into its piece 0: piece 0 is short, the
