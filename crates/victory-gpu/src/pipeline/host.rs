@@ -1136,6 +1136,13 @@ mod tests {
             eprintln!("no host depth bounds support; skipped");
             return;
         }
+        // The software adapter says it takes the test and draws through it
+        // all the same (depth 0.5 passes bounds of [0.6, 1.0]): the test is
+        // for a card.
+        if crate::host::on_warp() {
+            eprintln!("the software adapter does not apply depth bounds; skipped");
+            return;
+        }
         let Some(dxc) = dxc() else {
             eprintln!("no PC dxc.exe; skipped");
             return;
